@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+      <h1 class="title">Hello World!</h1>
+      <p id="currentTime"></p>
+      <script src="script.js"></script>
+  </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<title>PAK VIP AURA HACK</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Bebas+Neue&family=Outfit:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"/>
+
+<style>
+@property --ang{syntax:'<angle>';initial-value:0deg;inherits:false}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+
+:root{
+  --bg:#05050a;--bg2:#0b0b14;
+  --gold:#e6c15a;--gold2:#f7df8e;--gold3:#9c7a1e;
+  --gold-glow:rgba(230,193,90,.5);
+  --crim:#ff3b3b;--crim2:#b31212;--crim-glow:rgba(255,59,59,.5);
+  --glass:rgba(14,13,22,0.92);--glass2:rgba(255,255,255,.06);
+  --line:rgba(230,193,90,.22);
+  --text:#f4efe2;--dim:#a79e89;--dim2:#6f6655;
+  --win:#39d98a;--jp:#ffb020;
+  --sh1:0 12px 40px rgba(0,0,0,.85);
+}
+
+html,body{
+  width:100%;height:100%;overflow:hidden;background:#000;
+  font-family:'Outfit',sans-serif;user-select:none;-webkit-user-select:none;
+}
+
+/* ═══════════ FULLSCREEN GAME IFRAME ═══════════ */
+#gameIframe{position:fixed;inset:0;width:100vw;height:100vh;border:none;z-index:1;}
+#iframeGuard{position:fixed;inset:0;z-index:999990;display:none;background:transparent;}
+#cc{position:fixed;inset:0;pointer-events:none;z-index:999999;overflow:hidden;}
+.cp{position:absolute;width:6px;height:6px;opacity:0;animation:cf linear forwards;}
+@keyframes cf{0%{opacity:1;transform:translateY(-10px) rotate(0deg)}100%{opacity:0;transform:translateY(100vh) rotate(720deg)}}
+
+/* ═══════════ INTRO HD CIRCULAR LOGO ═══════════ */
+#introLogo{
+  position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+  z-index:999999;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  cursor:pointer;transition:opacity 0.5s ease, transform 0.5s ease;
+}
+#introLogo.hidden{opacity:0;pointer-events:none;transform:translate(-50%,-50%) scale(0.8);}
+
+.rotating-ring{
+  position:absolute;width:110px;height:110px;border-radius:50%;
+  border:3px solid transparent;border-top-color:var(--gold);border-right-color:var(--crim);
+  animation:spin 2s linear infinite;
+  filter:drop-shadow(0 0 8px var(--gold-glow));
+}
+.rotating-ring.ring-2{
+  width:130px;height:130px;border-top-color:var(--crim);border-right-color:var(--gold);
+  animation:spinReverse 3s linear infinite;
+  filter:drop-shadow(0 0 12px var(--crim-glow));
+}
+@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes spinReverse{0%{transform:rotate(360deg)}100%{transform:rotate(0deg)}}
+
+.logo-inner{
+  width:90px;height:90px;border-radius:50%;background:radial-gradient(circle, rgba(230,193,90,0.15) 0%, rgba(10,10,16,0.95) 70%);
+  border:2px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;
+  box-shadow:0 0 30px rgba(230,193,90,0.3), inset 0 0 20px rgba(0,0,0,0.8);
+  z-index:2;
+}
+.logo-inner svg{width:40px;height:40px;fill:var(--gold);filter:drop-shadow(0 0 5px var(--gold-glow));}
+.logo-tap{font-family:'Cinzel',serif;font-size:9px;font-weight:900;color:var(--gold);letter-spacing:2px;margin-top:6px;animation:pulseText 1.5s infinite alternate;}
+@keyframes pulseText{0%{opacity:0.6}100%{opacity:1;text-shadow:0 0 10px var(--gold-glow)}}
+
+/* ═══════════ FLOATING MINIMIZED PILL ═══════════ */
+#floatPill{
+  position:fixed;top:20px;right:16px;z-index:999995;display:none;
+  align-items:center;gap:8px;padding:8px 12px 8px 10px;border-radius:30px;
+  background:rgba(12,11,18,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1.5px solid var(--gold);box-shadow:0 8px 32px rgba(0,0,0,0.8), 0 0 20px rgba(230,193,90,0.4);
+  cursor:grab;touch-action:none;transition:transform 0.15s ease, box-shadow 0.2s ease;
+}
+#floatPill:active{cursor:grabbing;transform:scale(0.96)}
+.pill-bar-line{width:20px;height:4px;border-radius:4px;background:linear-gradient(90deg, var(--gold), var(--crim));box-shadow:0 0 8px var(--gold-glow);}
+.pill-txt{font-family:'Cinzel',serif;font-size:10px;font-weight:900;color:var(--gold);letter-spacing:1.5px;}
+.pill-badge{width:8px;height:8px;border-radius:50%;background:var(--crim);box-shadow:0 0 10px var(--crim-glow);animation:dotBlink 1s infinite alternate;}
+@keyframes dotBlink{0%{opacity:.3;transform:scale(.8)}100%{opacity:1;transform:scale(1.2)}}
+
+/* ═══════════ MAIN FLOATING HACK WINDOW (COMPACT) ═══════════ */
+#floatWidget{
+  position:fixed;top:20px;left:20px;width:260px;max-width:calc(100vw - 24px);
+  max-height:80vh;z-index:999998;display:none;flex-direction:column;
+  border-radius:18px;background:var(--glass);backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);border:1px solid var(--line);
+  box-shadow:var(--sh1), 0 0 35px rgba(230,193,90,0.15);overflow:hidden;touch-action:none;
+  transition:transform 0.25s cubic-bezier(.22,1,.36,1), opacity 0.25s ease;
+}
+
+/* ═══════════ DRAGGABLE HEADER ═══════════ */
+.drag-header{
+  position:relative;display:flex;flex-direction:column;align-items:center;
+  padding:8px 10px 8px;background:linear-gradient(180deg, rgba(230,193,90,0.12), rgba(255,255,255,0.02));
+  border-bottom:1px solid rgba(230,193,90,0.15);cursor:grab;user-select:none;
+}
+.drag-header:active{cursor:grabbing;}
+.drag-long-bar{
+  width:45px;height:4px;border-radius:4px;
+  background:linear-gradient(90deg, #f7df8e, var(--gold) 45%, #ff3b3b);
+  box-shadow:0 0 10px rgba(230,193,90,0.7);margin-bottom:6px;transition:width 0.2s ease;
+}
+.drag-header:hover .drag-long-bar{width:60px;box-shadow:0 0 16px rgba(230,193,90,0.9);}
+.dh-content{width:100%;display:flex;align-items:center;justify-content:space-between;}
+.dh-title{font-family:'Cinzel',serif;font-size:11px;font-weight:900;letter-spacing:1.5px;color:var(--gold);}
+.dh-ctrls{display:flex;align-items:center;gap:6px;}
+.dh-btn{
+  width:24px;height:24px;border-radius:6px;border:1px solid var(--line);
+  background:rgba(255,255,255,0.05);color:var(--gold);display:flex;align-items:center;
+  justify-content:center;cursor:pointer;font-size:14px;transition:0.2s;
+}
+.dh-btn:hover{background:rgba(230,193,90,0.2);border-color:var(--gold);}
+
+/* ═══════════ SCROLLABLE CONTENT BODY ═══════════ */
+.widget-scroll-body{
+  flex:1;overflow-y:auto;overflow-x:hidden;padding:12px;
+  display:flex;flex-direction:column;gap:10px;
+}
+.widget-scroll-body::-webkit-scrollbar{width:3px;}
+.widget-scroll-body::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;}
+
+/* ═══════════ VIEW SECTIONS ═══════════ */
+.view-section{display:none;flex-direction:column;gap:10px;animation:fadeIn 0.4s ease;}
+.view-section.active{display:flex;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* Typing Area */
+.typing-container{
+  background:rgba(18,17,28,0.72);backdrop-filter:blur(14px);border:1px solid var(--line);
+  border-radius:12px;padding:12px;min-height:80px;
+}
+.typing-line{
+  font-size:11px;font-weight:600;color:var(--text);line-height:1.5;
+  margin-bottom:6px;display:flex;align-items:flex-start;gap:6px;
+}
+.typing-line::before{content:'>';color:var(--gold);font-weight:900;}
+.cursor{display:inline-block;width:2px;height:12px;background:var(--gold);animation:blink 0.8s infinite;margin-left:2px;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* UID Input Area */
+.uid-container{
+  background:rgba(18,17,28,0.72);backdrop-filter:blur(14px);border:1px solid var(--line);
+  border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:10px;align-items:center;
+}
+.uid-label{font-size:10px;font-weight:800;color:var(--dim);letter-spacing:1.5px;text-transform:uppercase;text-align:center;}
+.uid-input{
+  width:100%;padding:10px;background:rgba(255,255,255,0.05);border:1px solid var(--line);
+  color:var(--gold);border-radius:8px;font-family:'Outfit',sans-serif;font-size:13px;
+  text-align:center;outline:none;transition:0.2s;font-weight:700;letter-spacing:1px;
+}
+.uid-input:focus{border-color:var(--gold);box-shadow:0 0 12px rgba(230,193,90,0.2);}
+.uid-input::placeholder{color:var(--dim2);font-weight:400;}
+
+/* ═══════════ COMPACT UI ELEMENTS (MAIN PANEL) ═══════════ */
+.glass{background:rgba(18,17,28,0.72);backdrop-filter:blur(14px);border:1px solid var(--line);border-radius:12px;}
+.period-box-mini{padding:8px 10px;display:flex;align-items:center;justify-content:space-between;}
+.pb-lbl{font-size:8px;font-weight:800;color:var(--dim);letter-spacing:1.5px;text-transform:uppercase;}
+.pb-val{font-size:12px;font-weight:800;color:var(--gold);letter-spacing:1px;font-variant-numeric:tabular-nums;}
+.pb-copy{
+  width:24px;height:24px;border-radius:6px;border:1px solid rgba(230,193,90,.3);
+  background:rgba(230,193,90,.1);color:var(--gold);display:flex;align-items:center;
+  justify-content:center;cursor:pointer;transition:0.2s;
+}
+.pb-copy:hover{background:rgba(230,193,90,.25);}
+
+.timer-pred-row{display:grid;grid-template-columns:85px 1fr;gap:8px;}
+.mini-timer-card{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px;}
+.t-num{font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;line-height:1;text-shadow:0 0 12px rgba(230,193,90,.6);}
+.t-lbl{font-size:7px;font-weight:800;color:var(--dim);letter-spacing:1px;margin-top:2px;}
+
+.pred-panel-mini{padding:8px 6px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+.pred-dot{width:5px;height:5px;border-radius:50%;background:var(--crim);box-shadow:0 0 8px var(--crim-glow);animation:dotBlink 1s infinite alternate;display:inline-block;margin-right:4px;}
+.pred-word{font-family:'Bebas Neue',sans-serif;font-size:36px;line-height:0.9;letter-spacing:2px;display:block;}
+.pred-word.big{background:linear-gradient(180deg,#ffd8d8,#ff3b3b 55%,#8f0b0b);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-style:italic;}
+.pred-word.small{background:linear-gradient(180deg,#e8e2d6,#9a9283 60%,#554f42);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;font-style:italic;}
+.pred-word.scan{font-size:22px;letter-spacing:4px;color:var(--dim);animation:scanPulse 1.2s infinite alternate;}
+@keyframes scanPulse{0%{opacity:.3}100%{opacity:.9}}
+.pred-nums{font-size:10px;font-weight:700;color:var(--dim);letter-spacing:1px;margin-top:2px;}
+.pred-nums b{color:#fff;font-weight:800;text-shadow:0 0 10px rgba(230,193,90,.5);}
+
+.conf-block{padding:8px 10px;}
+.conf-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;}
+.conf-lbl{font-size:7px;font-weight:800;color:var(--dim);letter-spacing:1.5px;text-transform:uppercase;}
+.conf-pct{font-size:12px;font-weight:900;color:var(--gold);}
+.conf-bg{height:5px;border-radius:3px;background:rgba(255,255,255,.08);overflow:hidden;}
+.conf-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,#8f0b0b,#ff3b3b 60%,var(--gold));transition:width .5s ease;}
+
+/* Action Buttons */
+.action-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px;}
+.btn-action{
+  padding:9px 4px;border-radius:9px;cursor:pointer;font-size:9px;font-weight:800;
+  letter-spacing:1.5px;text-transform:uppercase;font-family:'Outfit',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:5px;transition:0.2s;border:none;
+}
+.btn-get{background:rgba(230,193,90,.12);border:1.2px solid rgba(230,193,90,.4);color:var(--gold);}
+.btn-get:hover{background:rgba(230,193,90,.25);box-shadow:0 0 16px rgba(230,193,90,.3);}
+.btn-get:active{transform:scale(0.96);}
+.btn-get:disabled{opacity:0.5;cursor:not-allowed;}
+
+.btn-hide{background:rgba(255,59,59,.1);border:1.2px solid rgba(255,59,59,.4);color:var(--crim);}
+.btn-hide:hover{background:rgba(255,59,59,.2);box-shadow:0 0 16px rgba(255,59,59,.3);}
+.btn-hide:active{transform:scale(0.96);}
+
+.btn-primary{
+  width:100%;padding:10px;border-radius:9px;cursor:pointer;font-size:11px;font-weight:800;
+  letter-spacing:2px;text-transform:uppercase;font-family:'Outfit',sans-serif;
+  background:linear-gradient(135deg, var(--gold3), var(--gold));color:#000;border:none;
+  box-shadow:0 4px 15px rgba(230,193,90,0.3);transition:0.2s;
+}
+.btn-primary:hover{box-shadow:0 6px 20px rgba(230,193,90,0.5);transform:translateY(-1px);}
+.btn-primary:active{transform:scale(0.97);}
+</style>
+</head>
+<body>
+
+<!-- ════════ FULL SCREEN GAME BACKGROUND ════════ -->
+<iframe id="gameIframe" src="https://www.pakvip16.com/#/register?invitationCode=33674249684" allow="fullscreen"></iframe>
+<div id="iframeGuard"></div>
+<div id="cc"></div>
+
+<!-- ════════ INTRO HD CIRCULAR LOGO ════════ -->
+<div id="introLogo" onclick="startOnboarding()">
+  <div class="rotating-ring"></div>
+  <div class="rotating-ring ring-2"></div>
+  <div class="logo-inner">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+    <div class="logo-tap">TAP TO START</div>
+  </div>
+</div>
+
+<!-- ════════ MINIMIZED FLOATING PILL ════════ -->
+<div id="floatPill" onclick="toggleWidget(true)">
+  <div class="pill-bar-line"></div>
+  <span class="pill-badge"></span>
+  <span class="pill-txt">AURA</span>
+</div>
+
+<!-- ════════ MAIN DRAGGABLE HACK WIDGET ════════ -->
+<div id="floatWidget">
+  <div class="drag-header" id="dragHeader">
+    <div class="drag-long-bar"></div>
+    <div class="dh-content">
+      <div class="dh-title">⚔ PAK VIP AURA ✦</div>
+      <div class="dh-ctrls">
+        <div class="dh-btn" onclick="toggleWidget(false)" title="Hide">━</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="widget-scroll-body">
+    
+    <!-- VIEW 1: ONBOARDING (TYPING) -->
+    <div id="viewOnboarding" class="view-section">
+      <div class="typing-container">
+        <div id="typingArea"></div>
+      </div>
+      <button class="btn-primary" id="registerBtn" onclick="goToUid()">REGISTER NOW</button>
+    </div>
+
+    <!-- VIEW 2: UID INPUT -->
+    <div id="viewUid" class="view-section">
+      <div class="uid-container">
+        <div class="uid-label">ENTER YOUR UID TO ACTIVATE</div>
+        <input type="text" id="uidInput" class="uid-input" placeholder="Enter your UID here..." maxlength="20">
+        <button class="btn-primary" onclick="activateHack()">ACTIVATE HACK</button>
+      </div>
+    </div>
+
+    <!-- VIEW 3: MAIN HACK PANEL -->
+    <div id="viewMain" class="view-section">
+      <!-- PERIOD -->
+      <div class="period-box-mini glass">
+        <div>
+          <div class="pb-lbl">PERIOD:</div>
+          <div class="pb-val" id="periodVal">——————————</div>
+        </div>
+        <div class="pb-copy" onclick="copyPeriod()" title="Copy Period">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        </div>
+      </div>
+
+      <!-- TIMER + PREDICTION -->
+      <div class="timer-pred-row">
+        <div class="mini-timer-card glass">
+          <div class="t-num" id="tVal">60s</div>
+          <div class="t-lbl">DRAW IN</div>
+        </div>
+        <div class="pred-panel-mini glass">
+          <div class="pb-lbl"><span class="pred-dot"></span>NEXT SIGNAL</div>
+          <span class="pred-word scan" id="pWord">SCAN</span>
+          <div class="pred-nums" id="pNums">NUM: <b>—</b></div>
+        </div>
+      </div>
+
+      <!-- CONFIDENCE -->
+      <div class="conf-block glass">
+        <div class="conf-top">
+          <span class="conf-lbl">AI CONFIDENCE</span>
+          <span class="conf-pct" id="confPct">0%</span>
+        </div>
+        <div class="conf-bg"><div class="conf-fill" id="confFill" style="width:0%"></div></div>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="action-row">
+        <button class="btn-action btn-get" id="getResultBtn" onclick="forceGetResult()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 12a9 9 0 11-6.219-8.56"/><polyline points="21 3 21 9 15 9"/></svg>
+          GET RESULT
+        </button>
+        <button class="btn-action btn-hide" onclick="toggleWidget(false)">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          HIDE
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+let isActivated = false;
+let typingInterval = null;
+
+/* ═══════════ TOGGLE OPEN / CLOSE ═══════════ */
+const floatWidget = $('floatWidget');
+const floatPill = $('floatPill');
+
+function toggleWidget(open){
+  if(open){
+    floatWidget.style.display='flex';
+    floatPill.style.display='none';
+  } else {
+    floatWidget.style.display='none';
+    floatPill.style.display='flex';
+  }
+}
+
+/* ═══════════ ONBOARDING & TYPING LOGIC ═══════════ */
+function startOnboarding(){
+  $('introLogo').classList.add('hidden');
+  setTimeout(()=>{
+    $('introLogo').style.display='none';
+    floatWidget.style.display='flex';
+    $('viewOnboarding').classList.add('active');
+    startTyping();
+    speakHindi();
+  }, 500);
+}
+
+function speakHindi(){
+  if('speechSynthesis' in window){
+    window.speechSynthesis.cancel(); // Stop any previous
+    const text = "सबसे पहले अपना नया अकाउंट क्रिएट कर लें। दूसरे नंबर पर, अपनी पुरानी आईडी से लॉगिन न करें। तीसरे नंबर पर, हैक को एक्टिवेट करने के लिए पांच सौ रुपये का रिचार्ज कर लें।";
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'hi-IN';
+    utterance.rate = 0.95;
+    utterance.pitch = 1;
+    window.speechSynthesis.speak(utterance);
+  }
+}
+
+const linesToType = [
+  "1. Create a new account.",
+  "2. Do not login with your old ID.",
+  "3. Recharge 500 INR to activate the hack."
+];
+
+function startTyping(){
+  const area = $('typingArea');
+  area.innerHTML = '';
+  let lineIndex = 0;
+  let charIndex = 0;
+
+  function typeChar(){
+    if(lineIndex >= linesToType.length) {
+      // Remove cursor from last line
+      const cursors = area.querySelectorAll('.cursor');
+      if(cursors.length > 0) cursors[cursors.length-1].style.display = 'none';
+      return;
+    }
+
+    let currentLineEl = area.children[lineIndex];
+    if(!currentLineEl){
+      currentLineEl = document.createElement('div');
+      currentLineEl.className = 'typing-line';
+      area.appendChild(currentLineEl);
+    }
+
+    if(charIndex < linesToType[lineIndex].length){
+      currentLineEl.textContent = linesToType[lineIndex].substring(0, charIndex + 1);
+      // Add cursor
+      let cursor = currentLineEl.querySelector('.cursor');
+      if(!cursor){
+        cursor = document.createElement('span');
+        cursor.className = 'cursor';
+        currentLineEl.appendChild(cursor);
+      }
+      charIndex++;
+      typingInterval = setTimeout(typeChar, 40); // Typing speed
+    } else {
+      // Line finished, move to next
+      let cursor = currentLineEl.querySelector('.cursor');
+      if(cursor) cursor.style.display = 'none'; // Hide cursor on completed line
+      lineIndex++;
+      charIndex = 0;
+      typingInterval = setTimeout(typeChar, 300); // Pause between lines
+    }
+  }
+  typeChar();
+}
+
+function goToUid(){
+  if(typingInterval) clearTimeout(typingInterval);
+  window.speechSynthesis.cancel(); // Stop voice if button clicked early
+  $('viewOnboarding').classList.remove('active');
+  $('viewUid').classList.add('active');
+}
+
+function activateHack(){
+  const uid = $('uidInput').value.trim();
+  if(uid.length < 5){
+    $('uidInput').style.borderColor = 'var(--crim)';
+    $('uidInput').placeholder = "Invalid UID! Try again.";
+    setTimeout(()=>{
+      $('uidInput').style.borderColor = 'var(--line)';
+      $('uidInput').placeholder = "Enter your UID here...";
+    }, 1500);
+    return;
+  }
+
+  // Simulate activation
+  const btn = event.target;
+  const originalText = btn.textContent;
+  btn.textContent = "ACTIVATING...";
+  btn.disabled = true;
+
+  setTimeout(()=>{
+    isActivated = true;
+    $('viewUid').classList.remove('active');
+    $('viewMain').classList.add('active');
+    btn.textContent = originalText;
+    btn.disabled = false;
+    $('uidInput').value = ""; // Clear for security
+    
+    // Start engine
+    engine();
+    setTimer(60 - new Date().getSeconds());
+  }, 1500);
+}
+
+/* ═══════════ ULTRA-SMOOTH DRAG SYSTEM ═══════════ */
+function makeDraggable(element, handle) {
+  let isDragging = false, startX, startY, initialLeft, initialTop;
+  const guard = $('iframeGuard');
+
+  handle.addEventListener('pointerdown', startDrag);
+
+  function startDrag(e) {
+    if (e.button !== undefined && e.button !== 0) return;
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    const rect = element.getBoundingClientRect();
+    initialLeft = rect.left;
+    initialTop = rect.top;
+    guard.style.display = 'block';
+    window.addEventListener('pointermove', onDrag);
+    window.addEventListener('pointerup', stopDrag);
+  }
+
+  function onDrag(e) {
+    if (!isDragging) return;
+    let newLeft = initialLeft + (e.clientX - startX);
+    let newTop = initialTop + (e.clientY - startY);
+    const maxLeft = window.innerWidth - element.offsetWidth - 10;
+    const maxTop = window.innerHeight - element.offsetHeight - 10;
+    newLeft = Math.max(10, Math.min(newLeft, maxLeft));
+    newTop = Math.max(10, Math.min(newTop, maxTop));
+    element.style.left = `${newLeft}px`;
+    element.style.top = `${newTop}px`;
+    element.style.right = 'auto';
+  }
+
+  function stopDrag() {
+    isDragging = false;
+    guard.style.display = 'none';
+    window.removeEventListener('pointermove', onDrag);
+    window.removeEventListener('pointerup', stopDrag);
+  }
+}
+
+makeDraggable(floatWidget, $('dragHeader'));
+makeDraggable(floatPill, floatPill);
+
+/* ═══════════ TIMER ═══════════ */
+function setTimer(s){ $('tVal').textContent = s + 's'; }
+setInterval(()=>{ if(isActivated) setTimer(60 - new Date().getSeconds()); }, 1000);
+
+/* ═══════════ PREDICTION & ENGINE ═══════════ */
+let active = null, lastProc = '';
+
+function setPWord(txt, cls){
+  const el = $('pWord');
+  el.textContent = txt; 
+  el.className = 'pred-word ' + cls;
+}
+function setNums(txt){ $('pNums').innerHTML = 'NUM: <b>' + txt + '</b>'; }
+function setConf(p){
+  $('confPct').textContent = p + '%';
+  $('confFill').style.width = p + '%';
+}
+
+function copyPeriod(){
+  navigator.clipboard.writeText($('periodVal').textContent).catch(()=>{});
+}
+
+function confetti(n=40){
+  const c = $('cc');
+  const cols = ['#e6c15a','#f7df8e','#39d98a','#ffb020','#ff3b3b'];
+  for(let i=0;i<n;i++){
+    const p = document.createElement('div');
+    p.className = 'cp';
+    const sz = 4 + Math.random()*6;
+    p.style.cssText = `left:${Math.random()*100}%;width:${sz}px;height:${sz}px;background:${cols[Math.floor(Math.random()*cols.length)]};animation-duration:${1+Math.random()*1.5}s;`;
+    c.appendChild(p);
+    setTimeout(()=>p.remove(), 2500);
+  }
+}
+
+function predict(seq){
+  if(seq.length < 3) return {p:null, c:0};
+  const s = seq.join(''), len = s.length, last = s[len-1];
+  if(s.endsWith('BBBBB')) return {p:'BIG', c:88};
+  if(s.endsWith('SSSSS')) return {p:'SMALL', c:88};
+  if(s.endsWith('BSBSBS')||s.endsWith('SBSBSB')) return {p:last==='S'?'BIG':'SMALL', c:82};
+  const rec = s.slice(-8), bc = (rec.match(/B/g)||[]).length, sc = (rec.match(/S/g)||[]).length;
+  if(bc > sc) return {p:'BIG', c:Math.round(bc/rec.length*100)};
+  if(sc > bc) return {p:'SMALL', c:Math.round(sc/rec.length*100)};
+  return {p:last==='B'?'SMALL':'BIG', c:65};
+}
+
+async function engine(){
+  if(!isActivated) return;
+  try{
+    const r = await fetch(`https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json?t=${Date.now()}`);
+    const data = await r.json();
+    const list = data.data.list;
+    const latest = list[0];
+    const issue = latest.issueNumber;
+
+    const nextP = (BigInt(issue) + 1n).toString();
+    const hist = list.slice(0, 20).map(x => parseInt(x.number));
+    const chrono = hist.slice().reverse().map(n => n >= 5 ? 'B' : 'S');
+    let res = predict(chrono);
+    let pred = res.p, conf = res.c;
+    
+    if(!pred){
+      const rec = chrono.slice(-10), bc = rec.filter(x => x === 'B').length;
+      pred = bc > (rec.length - bc) ? 'BIG' : 'SMALL';
+      conf = 72;
+    }
+
+    const seed = parseInt(issue.slice(-3));
+    let n1, n2;
+    if(pred === 'BIG'){ 
+      n1 = [5,6,7,8,9][(seed + parseInt(latest.number)) % 5]; 
+      n2 = [0,1,2,3,4][(seed * 3) % 5]; 
+    } else { 
+      n1 = [0,1,2,3,4][(seed + parseInt(latest.number)) % 5]; 
+      n2 = [5,6,7,8,9][(seed * 7) % 5]; 
+    }
+
+    active = {period: nextP, size: pred, n1, n2, conf};
+    $('periodVal').textContent = nextP;
+    setPWord(pred, pred.toLowerCase());
+    setNums(n1 + ', ' + n2);
+    setConf(conf);
+    lastProc = issue;
+  }catch(e){console.log("Fetch error:", e);}
+}
+
+function forceGetResult(){
+  if(!isActivated) return;
+  const btn = $('getResultBtn');
+  const originalHTML = btn.innerHTML;
+  btn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 1s linear infinite"><path d="M21 12a9 9 0 11-6.219-8.56"/></svg> FETCHING...`;
+  btn.style.opacity = "0.7";
+  
+  engine().then(()=>{
+    btn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> UPDATED!`;
+    btn.style.borderColor = "var(--win)";
+    btn.style.color = "var(--win)";
+    setTimeout(()=>{
+      btn.innerHTML = originalHTML;
+      btn.style.opacity = "1";
+      btn.style.borderColor = "rgba(230,193,90,.4)";
+      btn.style.color = "var(--gold)";
+    }, 1200);
+  });
+}
+
+const style = document.createElement('style');
+style.textContent = `@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}`;
+document.head.appendChild(style);
+</script>
+</body>
+</html>
